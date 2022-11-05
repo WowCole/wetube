@@ -1,0 +1,7 @@
+extends base
+include mixins/video
+
+block content
+   h2 Welcome here you will se the trending video
+   each i in videos
+      +video(i)
