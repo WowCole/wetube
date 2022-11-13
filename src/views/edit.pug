@@ -1,6 +1,11 @@
-extends base.pug
+extends base
 
-block head 
-    title Edit | Wetube
+
 block content 
-    h1 Edit Video
+    h4 Update Video
+    form(method="POST")
+        input(name="title",placeholder="Video Title", value=video.title, required)
+        input(type="text",name="description",placeholder="Description",required, minlength=20, value=video.description)
+        input(type="text",name="hashtags",placeholder="Hashtags, separated by comma.",required, value=video.hashtags.join())
+        input(value="Save", type="submit")
+        
