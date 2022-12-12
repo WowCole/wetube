@@ -142,23 +142,23 @@ export const postEdit = async (req, res) => {
     body: { name, email, username, location },
   } = req;
   if (sessionEmail !== email || sessionUsername !== username) {
-    const duplicateCheckEmail = await User.find({
+    const duplicateCheckEmail = await User.findOne({
       $and: [{ _id: { $ne: _id } }, { email }],
     });
-    const duplicateCheckUsername = await User.find({
+    const duplicateCheckUsername = await User.findOne({
       $and: [{ _id: { $ne: _id } }, { username }],
     });
-    if (duplicateCheckEmail.length > 0 || duplicateCheckUsername.length > 0) {
-      let checkList = "";
-      if (duplicateCheckEmail.length > 0) {
-        checkList += " email";
+    if (duplicateCheckEmail || duplicateCheckUsername) {
+      let errorMessage = "";
+      if (duplicateCheckEmail) {
+        errorMessage += " email";
       }
-      if (duplicateCheckUsername.length > 0) {
-        checkList += " username";
+      if (duplicateCheckUsername) {
+        errorMessage += " username";
       }
       return res.render("edit-profile", {
         pageTitle: "Edit Profile",
-        errorMessage: `${checkList} already taken.`,
+        errorMessage: `${errorMessage} already taken.`,
       });
     }
   }
