@@ -3,7 +3,8 @@
   "version": "1.0.0",
   "description": "Study for full stack developer",
   "scripts": {
-    "dev": "nodemon --exec babel-node src/init.js"
+    "dev:server": "nodemon",
+    "dev:assets": "webpack"
   },
   "repository": {
     "type": "git",
@@ -24,6 +25,7 @@
     "express-session": "^1.17.3",
     "mongoose": "^6.7.1",
     "morgan": "^1.10.0",
+    "multer": "^1.4.5-lts.1",
     "node-fetch": "^3.3.0",
     "pug": "^3.0.2"
   },
@@ -31,6 +33,14 @@
     "@babel/core": "^7.19.6",
     "@babel/node": "^7.19.1",
     "@babel/preset-env": "^7.19.4",
-    "nodemon": "^2.0.20"
+    "babel-loader": "^9.1.0",
+    "css-loader": "^6.7.2",
+    "mini-css-extract-plugin": "^2.7.2",
+    "nodemon": "^2.0.20",
+    "sass": "^1.56.2",
+    "sass-loader": "^13.2.0",
+    "style-loader": "^3.3.1",
+    "webpack": "^5.75.0",
+    "webpack-cli": "^5.0.1"
   }
 }
