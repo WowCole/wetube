@@ -1,0 +1,10 @@
+.empty__message {
+  margin-bottom: 3em;
+  font-size: 1.5rem;
+}
+
+.video-grid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 50px;
+}

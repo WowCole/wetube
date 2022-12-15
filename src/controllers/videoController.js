@@ -4,7 +4,9 @@ import Video from "../models/Video";
 // 데이터 베이스 안을 검색하고 찾을 때에 {}안이 비어있다면 모든것을 찾는것
 
 export const home = async (req, res) => {
-  const videos = await Video.find({}).sort({ createdAt: "desc" });
+  const videos = await Video.find({})
+    .sort({ createdAt: "desc" })
+    .populate("owner");
   return res.render("video/home", { pageTitle: "Home", videos });
 };
 export const watch = async (req, res) => {
