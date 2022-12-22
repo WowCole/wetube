@@ -1,6 +1,7 @@
 import User from "../models/User";
 import fetch from "cross-fetch";
 import bcrypt from "bcrypt";
+import mongoose from "mongoose";
 
 export const getJoin = (req, res) =>
   res.render("users/join", { pageTitle: "Join" });
@@ -58,6 +59,10 @@ export const postLogin = async (req, res) => {
       errorMessage: "Wrong password",
     });
   }
+  await mongoose.connection
+    .collection("sessions")
+    .deleteMany({ session: { $regex: `${user.email}` } });
+
   req.session.loggedIn = true;
   req.session.user = user;
   return res.redirect("/");
@@ -124,6 +129,9 @@ export const finishGithubLogin = async (req, res) => {
         location: userData.location,
       });
     }
+    await mongoose.connection
+      .collection("sessions")
+      .deleteMany({ session: { $regex: `${user.email}` } });
     req.session.loggedIn = true;
     req.session.user = user;
     return res.redirect("/");
@@ -224,7 +232,8 @@ export const postChangePassword = async (req, res) => {
 export const see = async (req, res) => {
   const { id } = req.params;
   const user = await User.findById(id).populate("videos");
-  console.log(user);
+
+  // console.log(user);
   if (!user) {
     return res.status(404).render("404", { pageTitle: "User not found." });
   }

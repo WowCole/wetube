@@ -7,4 +7,18 @@
   display: grid;
   grid-template-columns: repeat(4, minmax(0, 1fr));
   gap: 50px;
+  padding: 2em 3em;
+}
+.auth-switch {
+  text-align: center;
+  margin-top: 3em;
+  a {
+    text-decoration: underline;
+  }
+}
+
+.avatar {
+  width: 10em;
+  height: 10em;
+  border-radius: 50%;
 }

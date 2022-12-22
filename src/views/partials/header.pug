@@ -14,8 +14,12 @@ header
                 li 
                     a(href="/videos/upload") Upload Video
                 li 
-                    a(href=`/users/${loggedInUser._id}`) My Profile
-                    
+                    a(href=`/users/${loggedInUser._id}`)
+                        if !loggedInUser.avatarUrl
+                            span 😀
+                        else 
+                            img(src=loggedInUser.avatarUrl).header__avatar
+         
             else
                 li      
                     a(href="/join") Join

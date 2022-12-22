@@ -1,0 +1,128 @@
+#videoContainer {
+  position: relative;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+  overflow: hidden;
+  video {
+    width: 100%;
+    z-index: 0;
+  }
+
+  progress {
+    position: absolute;
+    top: 0.27em;
+    width: 100%;
+    outline: none;
+    border: none;
+    height: 0.2em;
+    background: $red;
+    color: rgba(255, 255, 255, 0.3);
+    &::-moz-progress-bar {
+      background: $red;
+    }
+    &::-webkit-progress-value {
+      background: $red;
+    }
+  }
+  input[type="range"] {
+    -webkit-appearance: none;
+    outline: none;
+    height: 0.5em;
+    background-color: rgba(255, 255, 255, 0.3);
+    &::-webkit-slider-thumb {
+      -webkit-appearance: none;
+      appearance: none;
+      width: 1.5em;
+      height: 1.5em;
+      border-radius: 50%;
+      background: white;
+      cursor: pointer;
+    }
+    &::-moz-range-thumb {
+      width: 1.5em;
+      height: 1.5em;
+      border-radius: 50%;
+      background: white;
+      cursor: pointer;
+    }
+    &::-webkit-slider-runnable-track {
+      -webkit-appearance: none;
+      cursor: pointer;
+    }
+    &::-moz-range-progress {
+      background-color: rgba(255, 255, 255, 0.3);
+      cursor: pointer;
+    }
+  }
+
+  .videoContorls {
+    position: absolute;
+    display: flex;
+    bottom: 0;
+    width: 100%;
+    flex-direction: column;
+    align-items: center;
+    background: rgba(0, 0, 0, 0.8);
+    opacity: 0;
+    bottom: -1em;
+    z-index: -1;
+    transition: 0.2s ease-in-out;
+    .timeLine-container {
+      position: relative;
+      width: 100%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+    button {
+      font-size: 1.2rem;
+      text-align: center;
+      background: none;
+      color: white;
+      border: none;
+    }
+    .videoControls__timeline {
+      top: 0;
+      position: absolute;
+      width: 100%;
+      display: flex;
+      opacity: 0;
+      transition: opacity 0.2s ease-in-out;
+      &:hover {
+        opacity: 1;
+      }
+    }
+    .videoContorls__down {
+      padding: 1em;
+      width: calc(100% - 2em);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      .videoContorls__left {
+        display: flex;
+        align-items: center;
+        div {
+          margin-right: 1em;
+        }
+      }
+      .videoControls__right {
+        display: flex;
+        align-items: center;
+        flex-direction: row;
+        div {
+          display: flex;
+          align-items: center;
+          margin-left: 1em;
+        }
+      }
+    }
+  }
+  .showing {
+    z-index: 0;
+    opacity: 1;
+    transform: translateY(-1em);
+  }
+}
