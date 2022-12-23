@@ -5,7 +5,7 @@ module.exports = {
   entry: {
     main: "./src/client/js/main.js",
     videoPlayer: "./src/client/js/videoPlayer.js",
-    recoreder: "./src/client/js/recoreder.js",
+    recorder: "./src/client/js/recorder.js",
   },
   mode: "development",
   watch: true,
